@@ -16,7 +16,7 @@ const JobPage = ({ deleteJob }) => {
     }
   },[]);
  
-  const onDeleteClick = (jobId) => {
+  const onDeleteClick = async (jobId) => {
     const confirm = window.confirm(
       'Are you sure you want to delete this listing?'
     );
