@@ -23,11 +23,12 @@ const JobPage = ({ deleteJob }) => {
 
     if (!confirm) return;
 
-    deleteJob(jobId);
+    const res = await deleteJob(jobId);
+    if(!res.ok) return toast.error(`${res.status}: ${res.statusText}`);
 
     toast.success('Job deleted successfully');
 
-    navigate('/jobs');
+    return navigate('/jobs');
   };
 
   return (
