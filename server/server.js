@@ -23,12 +23,11 @@ app.use((req, res, next) => {
 // Routes
 app.use('/jobs', jobs);
 
-app.get("/", (req, res, next) => res.send(getRoutes(app, req, res, next)));
+app.get('/', (req, res, next) => res.send(getRoutes(app, req, res, next)));
 
 // Error handler
 app.use(notFound);
 app.use(errorHandler);
 
 // app.listen(port, () => console.log(`Server is running on port ${port}`));
-app.listen(port);
-// export default app;
+export default app;
