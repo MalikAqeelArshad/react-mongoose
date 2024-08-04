@@ -1,10 +1,10 @@
 # React Jobs Project
 
-This is the jobs listing project react CRUD demo by Aqeel Malik.
+This is the CRUD demo of jobs listing react project developed by Aqeel Malik.
 
 ## Usage
 
-This project uses ReactJS for frontend and MongoDB for backend.
+This project uses ReactJS for frontend and designed for the backend of MongoDB.
 
 ### Install Dependencies
 

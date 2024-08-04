@@ -17,18 +17,8 @@ const App = () => {
   const addJob = async (newJob) => {
     const res = await fetch('/api/jobs', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newJob),
-    });
-    return res;
-  };
-
-  // Delete Job
-  const deleteJob = async (id) => {
-    const res = await fetch(`/api/jobs/${id}`, {
-      method: 'DELETE',
     });
     return res;
   };
@@ -37,10 +27,16 @@ const App = () => {
   const updateJob = async (job) => {
     const res = await fetch(`/api/jobs/${job.id}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(job),
+    });
+    return res;
+  };
+
+  // Delete Job
+  const deleteJob = async (id) => {
+    const res = await fetch(`/api/jobs/${id}`, {
+      method: 'DELETE',
     });
     return res;
   };
@@ -59,6 +55,7 @@ const App = () => {
         <Route
           path='/jobs/:id'
           element={<JobPage deleteJob={deleteJob} />}
+          errorElement={<NotFoundPage />}
           loader={jobLoader}
         />
         <Route path='*' element={<NotFoundPage />} />

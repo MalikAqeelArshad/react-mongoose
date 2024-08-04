@@ -2,26 +2,20 @@ import { useState, useEffect } from 'react';
 import JobListing from './JobListing';
 import Spinner from './Spinner';
 
-import { allJobs } from '../jobs.json';
-
 const JobListings = ({ isHome = false }) => {
-  const [jobs, setJobs] = useState(allJobs);
+  const [jobs, setJobs] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchJobs = async () => {
-      setLoading(false);
-      setJobs(isHome ? allJobs.slice(0,3) : allJobs);
-      // const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs';
-      // try {
-      //   const res = await fetch(apiUrl);
-      //   const data = await res.json();
-      //   setJobs(data);
-      // } catch (error) {
-      //   console.log('Error fetching data', error);
-      // } finally {
-      //   setLoading(false);
-      // }
+      const apiUrl = `/api/jobs${isHome ? '?take=3' : ''}`;
+      try {
+        setJobs(await fetch(apiUrl).then(res => res.json()));
+      } catch (error) {
+        console.log('Error fetching data', error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchJobs();
@@ -39,7 +33,7 @@ const JobListings = ({ isHome = false }) => {
         ) : (
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             {jobs.map((job) => (
-              <JobListing key={job.id} job={job} />
+              <JobListing key={job._id} job={job} />
             ))}
           </div>
         )}
