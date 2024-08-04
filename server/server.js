@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/api/jobs', jobs);
+app.use('/jobs', jobs);
 
 // Error handler
 app.use(notFound);

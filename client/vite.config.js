@@ -6,8 +6,15 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
+    // proxy: {
+    //   '/api': 'https://react-mongoose-api.vercel.app',
+    // },
     proxy: {
-      '/api': 'https://react-mongoose-api.vercel.app/api',
+      '/api': {
+        target: 'https://react-mongoose-api.vercel.app',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
     },
   },
 });
