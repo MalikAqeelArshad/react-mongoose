@@ -8,7 +8,7 @@ const JobListings = ({ isHome = false }) => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = `/api/jobs${isHome ? '?take=3' : ''}`;
+      const apiUrl = `https://react-mongoose-api.vercel.app/api/jobs${isHome ? '?take=3' : ''}`;
       try {
         setJobs(await fetch(apiUrl).then(res => res.json()));
       } catch (error) {
