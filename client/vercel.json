@@ -1,12 +1,12 @@
 {
 	"rewrites": [
 		{
-			"source": "/(.*)",
-			"destination": "/"
-		},
-		{
 			"source": "/api/(.*)",
 			"destination": "https://react-mongoose-api.vercel.app/$1"
+		},
+		{
+			"source": "/(.*)",
+			"destination": "/"
 		}
 	]
 }
