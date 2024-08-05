@@ -12,8 +12,8 @@ const JobListing = ({ job }) => {
   }
 
   return (
-    <div className='bg-white rounded-xl shadow-md relative'>
-      <div className='p-4'>
+    <div className='bg-white rounded-xl shadow-md'>
+      <div className={ showFullDescription ? 'bg-white rounded-xl shadow-md p-4 absolute w-full z-10 left-0' : 'p-4' }>
         <div className='mb-6'>
           <div className='text-gray-600 my-2'>{job.type}</div>
           <h3 className='text-xl font-bold'>{job.title}</h3>
