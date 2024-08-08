@@ -2,13 +2,14 @@ import mongoose from 'mongoose';
 
 let database = [];
 let connection = [];
-const Database = (name) => {
+const Database = (name, req) => {
 	const dbName = name?.toUpperCase() || 'TEST';
 	if (!dbName) return console.log(`Invalid Database`);
 
 
 	const uri = process.env[`API_MONGODB_URI_${dbName}`];
 	console.info('uri', uri, dbName, connection);
+	console.info('req.headers', req.headers);
 	if (connection.includes(dbName)) return database[dbName];
 	try {
 		database[dbName] = mongoose.createConnection(uri);
