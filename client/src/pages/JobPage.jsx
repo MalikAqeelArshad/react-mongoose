@@ -106,8 +106,9 @@ const JobPage = ({ deleteJob }) => {
                   Edit Job
                 </Link>
                 <button
-                  onClick={() => onDeleteClick(job?._id)}
-                  className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
+                  disabled={Boolean(job?.id)}
+                  onClick={(e) => job?.id ? e.preventDefault() : onDeleteClick(job?._id)}
+                  className={`${job?.id ? 'bg-red-200':'bg-red-500 hover:bg-red-600'} text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block`}
                 >
                   Delete Job
                 </button>
