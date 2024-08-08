@@ -8,7 +8,7 @@ const Database = (name) => {
 
 	if (connection.includes(dbName)) return database[dbName];
 
-	const uri = process.env[`REACT_APP_MONGODB_URI_${dbName}`];
+	const uri = process.env[`API_MONGODB_URI_${dbName}`];
 	console.log('uri', uri, dbName, connection);
 	try {
 		database[dbName] = mongoose.createConnection(uri);
