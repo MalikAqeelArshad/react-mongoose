@@ -12,7 +12,6 @@ export const getJobs = async (req, res, next) => {
   const skip = parseInt(req.query.skip) || 0;
   const take = parseInt(req.query.take) || 0;
   // const find = {uuid: {$in: ['admin', req.query.user]}};
-  // req.headers['x-database'] = 'REACT';
   const jobs = await Job(req).find({}).skip(skip).limit(take);
   res.status(200).json(jobs);
 };

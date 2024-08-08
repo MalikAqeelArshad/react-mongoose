@@ -9,7 +9,7 @@ const Database = (name, req) => {
 
 	const uri = process.env[`API_MONGODB_URI_${dbName}`];
 	console.info('uri', uri, dbName, connection);
-	console.info('req.headers', req.headers);
+	console.info('req.headers', req);
 	if (connection.includes(dbName)) return database[dbName];
 	try {
 		database[dbName] = mongoose.createConnection(uri);
