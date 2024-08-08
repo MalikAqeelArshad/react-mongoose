@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
+    headers: { 'x-database' : 'REACT' },
     proxy: {
       cors: false,
       headers: { 'x-database' : 'REACT' },
@@ -16,20 +17,8 @@ export default defineConfig({
         secure: false,
         headers: { 'x-database' : 'REACT' },
         rewrite: (path) => path.replace(/^\/api/, ''),
-        configure: (proxy, _options) => {
-          proxy.on('error', (err, _req, _res) => {
-            console.info('proxy error', err);
-          });
-          proxy.on('proxyReq', (proxyReq, req, _res) => {
-            req['x-database'] = 'REACT';
-            req.headers['x-database'] = 'REACT';
-            proxyReq['x-database'] = 'REACT';
-            proxyReq.headers['x-database'] = 'REACT';
-            console.info('Sending Request to the Target:', req.method, req.url);
-          });
-          proxy.on('proxyRes', (proxyRes, req, _res) => {
-            console.info('Received Response from the Target:', proxyRes.statusCode, req.url);
-          });
+        configure: (proxy, options) => {
+          console.info('configure', proxy, options)
         },
       }
     },
