@@ -29,7 +29,7 @@ app.get('/', (req, res, next) => res.send(getRoutes(app, req, res, next)));
 app.use(notFound);
 app.use(errorHandler);
 
-if (process.env.NODE_ENV === 'development') {
-  app.listen(port, () => console.log(`Server is running on port ${port}`));
-}
+// if (process.env.NODE_ENV === 'development') {
+//   app.listen(port, () => console.log(`Server is running on port ${port}`));
+// }
 export default app;
