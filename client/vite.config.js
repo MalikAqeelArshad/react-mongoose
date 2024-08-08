@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
+      headers: { 'x-database' : 'REACT' },
       '/api': {
         target: 'https://react-mongoose-api.vercel.app',
         // target: 'http://localhost:8000',
@@ -18,7 +19,9 @@ export default defineConfig({
             console.info('proxy error', err);
           });
           proxy.on('proxyReq', (proxyReq, req, _res) => {
+            req['x-database'] = 'REACT';
             req.headers['x-database'] = 'REACT';
+            proxyReq['x-database'] = 'REACT';
             proxyReq.headers['x-database'] = 'REACT';
             console.info('Sending Request to the Target:', req.method, req.url);
           });
