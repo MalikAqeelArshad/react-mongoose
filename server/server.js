@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 import jobs from './routes/jobs.js';
 import getRoutes from './middleware/routes.js';
 import {notFound, errorHandler} from './middleware/error.js';
@@ -8,9 +8,9 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 // // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB Connected!'))
-  .catch((error) => console.log(error.message));
+// mongoose.connect(process.env.MONGODB_URI)
+//   .then(() => console.log('MongoDB Connected!'))
+//   .catch((error) => console.log(error.message));
 
 // Body parser middleware
 app.use(express.json());
