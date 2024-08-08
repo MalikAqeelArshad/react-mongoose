@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
+      cors: false,
       headers: { 'x-database' : 'REACT' },
       '/api': {
         target: 'https://react-mongoose-api.vercel.app',
