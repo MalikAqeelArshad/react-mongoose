@@ -10,7 +10,7 @@ const JobListings = ({ isHome = false }) => {
     const fetchJobs = async () => {
       const apiUrl = `/api/jobs${isHome ? '?take=3' : ''}`;
       try {
-        setJobs(await fetch(apiUrl).then(res => res.json()));
+        setJobs(await fetch(apiUrl,{headers: { 'x-database' : 'REACT' }}).then(res => res.json()));
       } catch (error) {
         console.log('Error fetching data', error);
       } finally {
