@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 let database = [];
 let connection = [];
 const Database = (name) => {
-	const dbName = name?.toUpperCase() || 'CRUD';
+	const dbName = name?.toUpperCase();
 	if (!dbName) return console.log(`Invalid Database`);
 
 	if (connection.includes(dbName)) return database[dbName];
