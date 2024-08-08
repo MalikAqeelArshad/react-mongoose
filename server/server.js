@@ -1,5 +1,5 @@
 import express from 'express';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import jobs from './routes/jobs.js';
 import getRoutes from './middleware/routes.js';
 import {notFound, errorHandler} from './middleware/error.js';
