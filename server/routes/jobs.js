@@ -6,6 +6,7 @@ import {
   createJob,
   updateJob,
   deleteJob,
+  createManyJob,
 } from '../controllers/jobController.js';
 
 // Get all jobs
@@ -22,5 +23,8 @@ router.put('/:id', updateJob);
 
 // Delete Job
 router.delete('/:id', deleteJob);
+
+// Create many new Job
+router.get('/create/many/:db', createManyJob);
 
 export default router;

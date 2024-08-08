@@ -1,6 +1,7 @@
-import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
+import Database from '../connection.js';
 
-const JobSchema = mongoose.Schema({
+const JobSchema = new Schema({
   id: String,
   title: String,
   type: String,
@@ -19,5 +20,10 @@ const JobSchema = mongoose.Schema({
   }
 });
 
-const Job = mongoose.model('Job', JobSchema);
+const Job = (req) => {
+  const db = req.headers['x-database'];
+  const connected = Database(db);
+  return connected.model('Job', JobSchema);
+}
+
 export default Job;
