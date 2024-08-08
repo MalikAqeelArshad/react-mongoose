@@ -13,11 +13,11 @@ import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 
 const App = () => {
+  const {headers} = JSON.parse(import.meta.env.VITE_DATABASE);
   // Add New Job
   const addJob = async (newJob) => {
     const res = await fetch('/api/jobs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'POST', headers,
       body: JSON.stringify(newJob),
     });
     return res;
@@ -26,8 +26,7 @@ const App = () => {
   // Update Job
   const updateJob = async (job) => {
     const res = await fetch(`/api/jobs/${job.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'PUT', headers,
       body: JSON.stringify(job),
     });
     return res;
@@ -36,7 +35,7 @@ const App = () => {
   // Delete Job
   const deleteJob = async (id) => {
     const res = await fetch(`/api/jobs/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE', headers
     });
     return res;
   };

@@ -10,7 +10,8 @@ const JobListings = ({ isHome = false }) => {
     const fetchJobs = async () => {
       const apiUrl = `/api/jobs${isHome ? '?take=3' : ''}`;
       try {
-        setJobs(await fetch(apiUrl).then(res => res.json()));
+        const headers = JSON.parse(import.meta.env.VITE_DATABASE);
+        setJobs(await fetch(apiUrl, headers).then(res => res.json()));
       } catch (error) {
         console.log('Error fetching data', error);
       } finally {

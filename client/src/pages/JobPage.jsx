@@ -121,7 +121,8 @@ const JobPage = ({ deleteJob }) => {
 };
 
 const jobLoader = async ({ params }) => {
-  const res = await fetch(`/api/jobs/${params.id}`);
+  const headers = JSON.parse(import.meta.env.VITE_DATABASE);
+  const res = await fetch(`/api/jobs/${params.id}`, headers);
   const data = await res.json();
   return data;
 };

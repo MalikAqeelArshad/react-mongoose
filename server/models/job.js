@@ -22,7 +22,7 @@ const JobSchema = new Schema({
 
 const Job = (req) => {
   const db = req.headers['x-database'];
-  const connected = Database(db,req);
+  const connected = Database(db);
   return connected.model('Job', JobSchema);
 }
 
