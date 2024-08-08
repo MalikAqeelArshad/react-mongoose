@@ -8,8 +8,8 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://react-mongoose-api.vercel.app',
-        // target: 'http://localhost:8000',
+        // target: 'https://react-mongoose-api.vercel.app',
+        target: 'http://localhost:8000',
         changeOrigin: true,
         headers: { 'x-database' : 'REACT' },
         rewrite: (path) => path.replace(/^\/api/, ''),

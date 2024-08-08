@@ -6,10 +6,10 @@ const Database = (name) => {
 	const dbName = name?.toUpperCase() || 'TEST';
 	if (!dbName) return console.log(`Invalid Database`);
 
-	if (connection.includes(dbName)) return database[dbName];
 
 	const uri = process.env[`API_MONGODB_URI_${dbName}`];
-	console.log('uri', uri, dbName, connection);
+	console.info('uri', uri, dbName, connection);
+	if (connection.includes(dbName)) return database[dbName];
 	try {
 		database[dbName] = mongoose.createConnection(uri);
 		console.log('MongoDB Connected!');
